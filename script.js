@@ -105,6 +105,7 @@ let linkRiferimento = "./domPage.html";
 function proceedBtn() {
   if (checkboxFlag.checked) {
     window.location.href = linkRiferimento;
+
   } else {
     alert("Please check the checkbox to proceed.");
   }
@@ -128,33 +129,38 @@ function questionario() {
 let array10Risposte = []
 let array4Risposte = []
 function risposte() {
-  for (let i = 0; i < questions.length; i++) {
-
-    for (let j = 0; j < questions.length; j++) {
-      array4Risposte.push(questions[j].correct_answer, questions[j].incorrect_answers)
-    }
+  for (let j = 0; j < questions.length; j++) {
+    array4Risposte.push({
+      correct_answer: questions[j].correct_answer,
+      incorrect_answers: questions[j].incorrect_answers
+    });
+  }
+  for (let i = 0; i < array4Risposte.length; i++) {
     array10Risposte.push(array4Risposte[i])
     /* array4Risposte = [] */
   }
-  console.log(array10Risposte)
-
+  return array10Risposte
 }
-console.log(risposte())
+console.log(risposte(array10Risposte))
+
 
 // Mescola un array
-/* function shuffle(array) {
+function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     // Genera un numero casuale tra 0 e i (compresi)
     const j = Math.floor(Math.random() * (i + 1));
     // Scambia gli elementi in posizione i e j
     [array[i], array[j]] = [array[j], array[i]];
   }
-  return array4Risposte;
-} 
+  return array;
+}
 console.log(shuffle(array4Risposte))
- */
+
+
+
+
 // Mostra una domanda e le risposte
-function showQuestion(questionIndex) {
+/* function showQuestion(questionIndex) {
   const question = questions[questionIndex];
   const answers = [...question.incorrect_answers, question.correct_answer];
   shuffle(answers);
@@ -179,7 +185,7 @@ function checkAnswer(selectedAnswer, correctAnswer, questionIndex) {
     alert('Questionario completato!');
   }
 }
-
+ */
 
 /* function ricerca() {
 
