@@ -4,6 +4,7 @@ body {
 }
 #header img {
   width: 150px;
+  color: black;
 }
 main {
   position: absolute;
