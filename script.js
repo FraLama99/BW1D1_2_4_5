@@ -123,21 +123,60 @@ function questionario() {
     risposteGiuste.push(giusta)
   }
   console.log(risposteGiuste);
-
-
-  for (let i = 0; i < risposteGiuste.length; i++) {
-    if (btn1.value.includes(risposteGiuste[i])) {
-      contatore = contatore + 1;
-      alert("La risposta è giusta!")
-    }
-    
-  }
-  
 }
-console.log(questionario());
+/* console.log(questionario()); */
+let arrayRisposte = []
+function risposte() {
+  for (let i = 0; i < questions.length; i++) {
+
+    arrayRisposte.push(questions[i].correct_answer, questions[i].incorrect_answers, questions[i].question)
+  }
+  console.log(arrayRisposte)
+
+}
+console.log(risposte())
+
+// Mescola un array
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Genera un numero casuale tra 0 e i (compresi)
+    const j = Math.floor(Math.random() * (i + 1));
+    // Scambia gli elementi in posizione i e j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return arrayRisposte;
+}
+console.log(shuffle(arrayRisposte))
+
+// Mostra una domanda e le risposte
+function showQuestion(questionIndex) {
+  const question = questions[questionIndex];
+  const answers = [...question.incorrect_answers, question.correct_answer];
+  shuffle(answers);
+
+  document.getElementById('question').innerText = question.question;
+  const buttons = document.querySelectorAll('.answer-button');
+  buttons.forEach((button, index) => {
+    button.innerText = answers[index];
+    button.onclick = () => checkAnswer(answers[index], question.correct_answer, questionIndex);
+  });
+}
+
+function checkAnswer(selectedAnswer, correctAnswer, questionIndex) {
+  if (selectedAnswer === correctAnswer) {
+    alert('Corretto!');
+  } else {
+    alert('Sbagliato!');
+  }
+  if (questionIndex < questions.length - 1) {
+    showQuestion(questionIndex + 1);
+  } else {
+    alert('Questionario completato!');
+  }
+}
 
 
-function ricerca() {
+/* function ricerca() {
 
 
   let titleInput = document.getElementById('ricercaTitolo').value
@@ -217,4 +256,4 @@ function ricerca() {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
-}*/
+}*/ 
