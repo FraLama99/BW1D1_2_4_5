@@ -2,6 +2,9 @@ body {
   margin: 0;
   position: relative;
 }
+#header img {
+  width: 150px;
+}
 main {
   position: absolute;
   top: 0;
@@ -29,7 +32,4 @@ main {
   width: 150px;
   height: 70px;
   border-radius: 10px;
-  
-
-
 }
