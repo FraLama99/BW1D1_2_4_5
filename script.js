@@ -125,29 +125,34 @@ function questionario() {
   console.log(risposteGiuste);
 }
 /* console.log(questionario()); */
-let arrayRisposte = []
+let array10Risposte = []
+let array4Risposte = []
 function risposte() {
   for (let i = 0; i < questions.length; i++) {
 
-    arrayRisposte.push(questions[i].correct_answer, questions[i].incorrect_answers, questions[i].question)
+    for (let j = 0; j < questions.length; j++) {
+      array4Risposte.push(questions[j].correct_answer, questions[j].incorrect_answers)
+    }
+    array10Risposte.push(array4Risposte[i])
+    /* array4Risposte = [] */
   }
-  console.log(arrayRisposte)
+  console.log(array10Risposte)
 
 }
 console.log(risposte())
 
 // Mescola un array
-function shuffle(array) {
+/* function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     // Genera un numero casuale tra 0 e i (compresi)
     const j = Math.floor(Math.random() * (i + 1));
     // Scambia gli elementi in posizione i e j
     [array[i], array[j]] = [array[j], array[i]];
   }
-  return arrayRisposte;
-}
-console.log(shuffle(arrayRisposte))
-
+  return array4Risposte;
+} 
+console.log(shuffle(array4Risposte))
+ */
 // Mostra una domanda e le risposte
 function showQuestion(questionIndex) {
   const question = questions[questionIndex];
