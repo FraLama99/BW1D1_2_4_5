@@ -20,7 +20,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   width: 200px;
-  align-content: center;
+  align-content: space-between;
   margin: auto;
   gap: 40px;
 }
