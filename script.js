@@ -109,3 +109,10 @@ function proceedBtn() {
     alert("Please check the checkbox to proceed.");
   }
 }
+
+let contatore = 0;
+let btn1 = document.getElementById
+
+function questionario(){
+    
+}
