@@ -109,3 +109,21 @@ function proceedBtn() {
     alert("Please check the checkbox to proceed.");
   }
 }
+
+let contatore = 0;
+let btn1 = document.getElementById
+
+function questionario() {
+
+}
+
+
+function mescolaArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Genera un numero casuale tra 0 e i (compresi)
+    const j = Math.floor(Math.random() * (i + 1));
+    // Scambia gli elementi in posizione i e j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}

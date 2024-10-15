@@ -2,6 +2,10 @@ body {
   margin: 0;
   position: relative;
 }
+#header img {
+  width: 150px;
+  color: black;
+}
 main {
   position: absolute;
   top: 0;
@@ -14,4 +18,19 @@ main {
 .background {
   width: 100vw;
   height: 100vh;
+}
+
+.bottoni {
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+  align-content: space-between;
+  margin: auto;
+  gap: 40px;
+}
+
+.Btn {
+  width: 150px;
+  height: 70px;
+  border-radius: 10px;
 }
