@@ -98,7 +98,7 @@ const questions = [
   },
 ];
 
-
+//PAGINA PRINCIPALE - FUNZIONE PER PROCEDERE ALLE DOMANDE
 let checkboxFlag = document.getElementById('checkboxFlag')
 let linkRiferimento = "./domPage.html";
 
@@ -110,15 +110,106 @@ function proceedBtn() {
   }
 }
 
+let risposteGiuste = [];
 let contatore = 0;
-let btn1 = document.getElementById
+let btn1 = document.getElementById("btn1")
+let btn2 = document.getElementById("btn2")
+let btn3 = document.getElementById("btn3")
+let btn4 = document.getElementById("btn4")
 
 function questionario() {
+  for (let i = 0; i < questions.length; i++) {
+    let giusta = questions[i].correct_answer
+    risposteGiuste.push(giusta)
+  }
+  console.log(risposteGiuste);
+
+
+  for (let i = 0; i < risposteGiuste.length; i++) {
+    if (btn1.value.includes(risposteGiuste[i])) {
+      contatore = contatore + 1;
+      alert("La risposta è giusta!")
+    }
+    
+  }
+  
+}
+console.log(questionario());
+
+
+function ricerca() {
+
+
+  let titleInput = document.getElementById('ricercaTitolo').value
+  let locationInput = document.getElementById('ricercaLuogo').value
+
+  divVuoto.innerHTML = '';
+  let result = [];
+
+  if (titleInput === '' && locationInput === '') {
+      alert('Inserisci dei valori nel campo di ricerca')
+      return
+  }
+
+  for (i = 0; i < jobs.length; i++) {
+      if (jobs[i].title.toLowerCase().includes(titleInput.toLowerCase()) && jobs[i].location.toLowerCase().includes(locationInput.toLowerCase())) {
+          result.push(jobs[i])
+      }
+
+  }
+  count = result.length
+
+  divVuoto.innerHTML = '<h2> Risultati Trovati:' + count + '</h2>'
+
+
+
+  if (count > 0) {
+
+      let table = document.createElement('table');
+
+      let header = document.createElement('tr');
+
+      let thTitle = document.createElement('th');
+      let thLocation = document.createElement('th');
+
+      thTitle.textContent = 'Offerta';
+      thLocation.textContent = 'Luogo';
+
+      header.appendChild(thTitle);
+      header.appendChild(thLocation);
+      table.appendChild(header);
+
+      for (i = 0; i < result.length; i++) {
+          let riga = document.createElement('tr');
+          let cellaTitolo = document.createElement('td');
+          let cellaLuogo = document.createElement('td');
+          cellaTitolo.textContent = result[i].title;
+          cellaLuogo.textContent = result[i].location;
+
+          riga.appendChild(cellaTitolo);
+          riga.appendChild(cellaLuogo);
+          table.appendChild(riga);
+      }
+
+      divVuoto.appendChild(table);
+  }
+  else {
+      let no_result = document.createElement('p')
+      no_result.style.color = "azure"
+      no_result.textContent = "Non ci sono risultati"
+      divVuoto.appendChild(no_result)
+  }
+
+  document.getElementById('ricercaTitolo').value = '';
+  document.getElementById('ricercaLuogo').value = '';
+
+  return { result, count }
+
 
 }
 
 
-function mescolaArray(array) {
+/*function mescolaArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     // Genera un numero casuale tra 0 e i (compresi)
     const j = Math.floor(Math.random() * (i + 1));
@@ -126,4 +217,4 @@ function mescolaArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
-}
+}*/
