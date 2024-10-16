@@ -113,10 +113,10 @@ function proceedBtn() {
 
 let risposteGiuste = [];
 let contatore = 0;
-let btn1 = document.getElementById("btn1")
-let btn2 = document.getElementById("btn2")
-let btn3 = document.getElementById("btn3")
-let btn4 = document.getElementById("btn4")
+let btn1 = document.getElementById("btnAnswer1")
+let btn2 = document.getElementById("btnAnswer2")
+let btn3 = document.getElementById("btnAnswer3")
+let btn4 = document.getElementById("btnAnswer4")
 
 function questionario() {
   for (let i = 0; i < questions.length; i++) {
@@ -132,7 +132,8 @@ function risposte() {
   for (let j = 0; j < questions.length; j++) {
     array4Risposte.push({
       correct_answer: questions[j].correct_answer,
-      incorrect_answers: questions[j].incorrect_answers
+      incorrect_answers: questions[j].incorrect_answers,
+      question: questions[j].question
     });
   }
   for (let i = 0; i < array4Risposte.length; i++) {
@@ -140,8 +141,13 @@ function risposte() {
     /* array4Risposte = [] */
   }
   return array10Risposte
+  let domandeQuiz = document.getElementById("question")
+  domandeQuiz.innerText=array4Risposte.question
+  
 }
+
 console.log(risposte(array10Risposte))
+
 
 
 // Mescola un array
@@ -156,7 +162,35 @@ function shuffle(array) {
 }
 console.log(shuffle(array4Risposte))
 
+function quizzone(){
+  
+  for(let i=0; i<array10Risposte.length; i++){
+    for (let j=0; j<array4Risposte.length; j++){
+      // let risposteNew = array4Risposte[j];
+    
+    btn1.innerText = array4Risposte[j].incorrect_answers[0]
+    btn2.innerText = array4Risposte[j].incorrect_answers[1]
+    btn3.innerText = array4Risposte[j].incorrect_answers[2]
+    btn4.innerText = array4Risposte[i].correct_answer
 
+    if (btn1.value=="undefined" || btn2.value=="undefined" || btn3.value=="undefined" || btn4.value=="undefined"){
+      
+      let no_result = document.getElementById("btn2")
+     no_result.style.display="none"
+      // btn2.style.display="none"
+      // btn3.style.display="none"
+      // btn4.style.display="none"
+
+    }
+  
+    shuffle(array4Risposte)
+  }
+}
+
+
+  
+
+}
 
 
 // Mostra una domanda e le risposte
