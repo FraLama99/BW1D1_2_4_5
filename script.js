@@ -98,10 +98,82 @@ const questions = [
   },
 ];
 
+// Mescola un array
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Genera un numero casuale tra 0 e i (compresi)
+    const j = Math.floor(Math.random() * (i + 1));
+    // Scambia gli elementi in posizione i e j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+
+let btn1 = document.getElementById("btnAnswer1")
+let btn2 = document.getElementById("btnAnswer2")
+let btn3 = document.getElementById("btnAnswer3")
+let btn4 = document.getElementById("btnAnswer4")
+
+let contatore = 0;
+let contatoreSbagliate = 0;
+let currentQuestionIndex = 0;
+
+let questionsRandomized = shuffle(questions)
+console.log(questionsRandomized)
+
+function quizzone() {
+  if (currentQuestionIndex >= questionsRandomized.length) {
+    /*  window.location.href = linkFinale; */
+    return console.log(contatore, contatoreSbagliate)
+  }
+
+  let currentQuestion = questionsRandomized[currentQuestionIndex];
+  let answers = [
+    ...currentQuestion.incorrect_answers,
+    currentQuestion.correct_answer,
+  ];
+
+
+  answers = shuffle(answers);
+  console.log(answers)
+
+  document.getElementById("question").innerText = currentQuestion.question;
+
+
+  btn1.innerText = answers[0];
+  btn2.innerText = answers[1];
+  btn3.innerText = answers[2];
+  btn4.innerText = answers[3];
+
+
+  btn1.onclick = () => checkAnswer(answers[0], currentQuestion.correct_answer);
+  btn2.onclick = () => checkAnswer(answers[1], currentQuestion.correct_answer);
+  btn3.onclick = () => checkAnswer(answers[2], currentQuestion.correct_answer);
+  btn4.onclick = () => checkAnswer(answers[3], currentQuestion.correct_answer);
+
+  currentQuestionIndex++;
+}
+
+
+function checkAnswer(selectedAnswer, correctAnswer) {
+  if (selectedAnswer === correctAnswer) {
+
+    contatore++;
+  } else {
+    contatoreSbagliate++;
+  }
+  quizzone();
+
+}
+
+
+quizzone();
+/*
 //PAGINA PRINCIPALE - FUNZIONE PER PROCEDERE ALLE DOMANDE
 let checkboxFlag = document.getElementById('checkboxFlag')
 let linkRiferimento = "./domPage.html";
-
+let linkFinale = "./paginaFinale.html"
 function proceedBtn() {
   if (checkboxFlag.checked) {
     window.location.href = linkRiferimento;
@@ -112,11 +184,8 @@ function proceedBtn() {
 }
 
 let risposteGiuste = [];
-let contatore = 0;
-let btn1 = document.getElementById("btnAnswer1")
-let btn2 = document.getElementById("btnAnswer2")
-let btn3 = document.getElementById("btnAnswer3")
-let btn4 = document.getElementById("btnAnswer4")
+
+
 
 function questionario() {
   for (let i = 0; i < questions.length; i++) {
@@ -125,7 +194,7 @@ function questionario() {
   }
   console.log(risposteGiuste);
 }
-/* console.log(questionario()); */
+/* console.log(questionario());
 let array10Risposte = []
 let array4Risposte = []
 function risposte() {
@@ -138,59 +207,18 @@ function risposte() {
   }
   for (let i = 0; i < array4Risposte.length; i++) {
     array10Risposte.push(array4Risposte[i])
-    /* array4Risposte = [] */
+    /* array4Risposte = []
   }
   return array10Risposte
-  let domandeQuiz = document.getElementById("question")
-  domandeQuiz.innerText=array4Risposte.question
-  
+
+
 }
 
 console.log(risposte(array10Risposte))
+ */
 
-
-
-// Mescola un array
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    // Genera un numero casuale tra 0 e i (compresi)
-    const j = Math.floor(Math.random() * (i + 1));
-    // Scambia gli elementi in posizione i e j
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-console.log(shuffle(array4Risposte))
-
-function quizzone(){
-  
-  for(let i=0; i<array10Risposte.length; i++){
-    for (let j=0; j<array4Risposte.length; j++){
-      // let risposteNew = array4Risposte[j];
-    
-    btn1.innerText = array4Risposte[j].incorrect_answers[0]
-    btn2.innerText = array4Risposte[j].incorrect_answers[1]
-    btn3.innerText = array4Risposte[j].incorrect_answers[2]
-    btn4.innerText = array4Risposte[i].correct_answer
-
-    if (btn1.value=="undefined" || btn2.value=="undefined" || btn3.value=="undefined" || btn4.value=="undefined"){
-      
-      let no_result = document.getElementById("btn2")
-     no_result.style.display="none"
-      // btn2.style.display="none"
-      // btn3.style.display="none"
-      // btn4.style.display="none"
-
-    }
-  
-    shuffle(array4Risposte)
-  }
-}
-
-
-  
-
-}
+/* shuffle(array4Risposte)
+console.log(array4Risposte) */
 
 
 // Mostra una domanda e le risposte
