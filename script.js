@@ -165,21 +165,22 @@ function quizzone() {
   let buttonContainer = document.getElementById("contenitoreButtoni");
   buttonContainer.innerHTML = '';
 
+  let RISPOSTA;
+
   for ( i = 0; i < answers.length; i++){
     let buttone = document.createElement("button");
     buttone.innerText = answers[i];
     buttone.className = "Btn";
 
-    buttone.addEventListener("click", function() { checkAnswer(answers[i], currentQuestion.correct_answer);});
-
+    buttone.onclick = () => RISPOSTA = answers[i];
     buttonContainer.appendChild(buttone);
   }
 
-    /*let buttone = document.createElement("button");
+    let buttone = document.createElement("button");
     buttone.innerText = "Conferma";
     buttone.className = "Btn";
     buttonContainer.appendChild(buttone);
-    buttone.addEventListener("click", function() { quizzone();});*/
+    buttone.addEventListener("click", function() { checkAnswer(RISPOSTA, currentQuestion)});
 
   /*btn1.innerText = answers[0];
   btn2.innerText = answers[1];
