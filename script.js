@@ -157,7 +157,6 @@ function quizzone() {
     currentQuestion.correct_answer,
   ];
 
-
   answers = shuffle(answers);
   console.log(answers)
 
@@ -165,33 +164,38 @@ function quizzone() {
   let buttonContainer = document.getElementById("contenitoreButtoni");
   buttonContainer.innerHTML = '';
 
-  let RISPOSTA;
 
-  for ( i = 0; i < answers.length; i++){
+  let selectedAnswer = null;
+
+  for (let i = 0; i < answers.length; i++) {
     let buttone = document.createElement("button");
     buttone.innerText = answers[i];
     buttone.className = "Btn";
+    buttone.onclick = function () {
+      selectedAnswer = answers[i];
 
-    buttone.onclick = () => RISPOSTA = answers[i];
+      buttone.classList.add("luminol")
+
+
+    };
     buttonContainer.appendChild(buttone);
+
   }
 
-    let buttone = document.createElement("button");
-    buttone.innerText = "Conferma";
-    buttone.className = "Btn";
-    buttonContainer.appendChild(buttone);
-    buttone.addEventListener("click", function() { checkAnswer(RISPOSTA, currentQuestion)});
+  let confirmButton = document.createElement("button");
+  confirmButton.innerText = "Conferma";
+  confirmButton.className = "Btn";
+  buttonContainer.appendChild(confirmButton);
+  confirmButton.addEventListener("click", function () {
+    if (selectedAnswer !== null) {
+      checkAnswer(selectedAnswer, currentQuestion.correct_answer);
+      quizzone();
 
-  /*btn1.innerText = answers[0];
-  btn2.innerText = answers[1];
-  btn3.innerText = answers[2]; 
-  btn4.innerText = answers[3];
+    } else {
+      alert("clicca la risposta");
+    }
+  });
 
-
-  btn1.onclick = () => checkAnswer(answers[0], currentQuestion.correct_answer);
-  btn2.onclick = () => checkAnswer(answers[1], currentQuestion.correct_answer);
-  btn3.onclick = () => checkAnswer(answers[2], currentQuestion.correct_answer);
-  btn4.onclick = () => checkAnswer(answers[3], currentQuestion.correct_answer);*/
 
   currentQuestionIndex++;
 
@@ -207,7 +211,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   }
   console.log(contatore)
   console.log(contatoreSbagliate)
-  quizzone()
+
 }
 
 
@@ -421,4 +425,16 @@ function checkAnswer(selectedAnswer, correctAnswer, questionIndex) {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
-}*/ 
+}*/
+
+
+/*btn1.innerText = answers[0];
+btn2.innerText = answers[1];
+btn3.innerText = answers[2]; 
+btn4.innerText = answers[3];
+
+
+btn1.onclick = () => checkAnswer(answers[0], currentQuestion.correct_answer);
+btn2.onclick = () => checkAnswer(answers[1], currentQuestion.correct_answer);
+btn3.onclick = () => checkAnswer(answers[2], currentQuestion.correct_answer);
+btn4.onclick = () => checkAnswer(answers[3], currentQuestion.correct_answer);*/
