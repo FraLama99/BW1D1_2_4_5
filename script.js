@@ -101,7 +101,116 @@ const questions = [
 //PAGINA PRINCIPALE - FUNZIONE PER PROCEDERE ALLE DOMANDE
 let checkboxFlag = document.getElementById('checkboxFlag')
 let linkRiferimento = "./domPage.html";
+let linkFinale = "./paginaFinale.html"
+function proceedBtn() {
+  if (checkboxFlag.checked) {
+    window.location.href = linkRiferimento;
 
+  } else {
+    alert("Please check the checkbox to proceed.");
+  }
+}
+
+
+
+
+// Mescola un array
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Genera un numero casuale tra 0 e i (compresi)
+    const j = Math.floor(Math.random() * (i + 1));
+    // Scambia gli elementi in posizione i e j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+
+let btn1 = document.getElementById("btnAnswer1")
+let btn2 = document.getElementById("btnAnswer2")
+let btn3 = document.getElementById("btnAnswer3")
+let btn4 = document.getElementById("btnAnswer4")
+let contatori = []
+let contatore = 0;
+let contatoreSbagliate = 0;
+let currentQuestionIndex = 0;
+
+let questionsRandomized = shuffle(questions)
+console.log(questionsRandomized)
+
+
+//FUNZIONE DI GESTIONE DOMANDE 
+function quizzone() {
+  if (currentQuestionIndex >= questionsRandomized.length) {
+    /*  window.location.href = linkFinale; */
+
+    let contatori = [contatore, contatoreSbagliate]
+    return contatori
+  }
+  let contatore = contatori[0]
+  let contatoreSbagliate = contatori[1]
+
+
+  let currentQuestion = questionsRandomized[currentQuestionIndex];
+  let answers = [
+    ...currentQuestion.incorrect_answers,
+    currentQuestion.correct_answer,
+  ];
+
+
+  answers = shuffle(answers);
+  console.log(answers)
+
+  document.getElementById("question").innerText = currentQuestion.question;
+  let buttonContainer = document.getElementById("contenitoreButtoni");
+  buttonContainer.innerHTML = '';
+
+  for ( i = 0; i < answers.length; i++){
+    let buttone = document.createElement("button");
+    buttone.innerText = answers[i];
+    buttone.className = "Btn";
+
+    buttone.addEventListener("click", function() { checkAnswer(answers[i], currentQuestion.correct_answer);});
+
+    buttonContainer.appendChild(buttone);
+  }
+
+  /*btn1.innerText = answers[0];
+  btn2.innerText = answers[1];
+  btn3.innerText = answers[2]; 
+  btn4.innerText = answers[3];
+
+
+  btn1.onclick = () => checkAnswer(answers[0], currentQuestion.correct_answer);
+  btn2.onclick = () => checkAnswer(answers[1], currentQuestion.correct_answer);
+  btn3.onclick = () => checkAnswer(answers[2], currentQuestion.correct_answer);
+  btn4.onclick = () => checkAnswer(answers[3], currentQuestion.correct_answer);*/
+
+  currentQuestionIndex++;
+
+}
+
+
+function checkAnswer(selectedAnswer, correctAnswer) {
+  if (selectedAnswer === correctAnswer) {
+
+    contatore++;
+  } else {
+    contatoreSbagliate++;
+  }
+  console.log(contatore)
+  console.log(contatoreSbagliate)
+  quizzone();
+
+}
+
+
+quizzone();
+/*
+//PAGINA PRINCIPALE - FUNZIONE PER PROCEDERE ALLE DOMANDE
+let checkboxFlag = document.getElementById('checkboxFlag')
+let linkRiferimento = "./domPage.html";
+let linkFinale = "./paginaFinale.html"
 function proceedBtn() {
   if (checkboxFlag.checked) {
     window.location.href = linkRiferimento;
@@ -112,11 +221,8 @@ function proceedBtn() {
 }
 
 let risposteGiuste = [];
-let contatore = 0;
-let btn1 = document.getElementById("btnAnswer1")
-let btn2 = document.getElementById("btnAnswer2")
-let btn3 = document.getElementById("btnAnswer3")
-let btn4 = document.getElementById("btnAnswer4")
+
+
 
 function questionario() {
   for (let i = 0; i < questions.length; i++) {
@@ -125,7 +231,7 @@ function questionario() {
   }
   console.log(risposteGiuste);
 }
-/* console.log(questionario()); */
+/* console.log(questionario());
 let array10Risposte = []
 let array4Risposte = []
 function risposte() {
@@ -138,12 +244,11 @@ function risposte() {
   }
   for (let i = 0; i < array4Risposte.length; i++) {
     array10Risposte.push(array4Risposte[i])
-    /* array4Risposte = [] */
+    /* array4Risposte = []
   }
   return array10Risposte
-  let domandeQuiz = document.getElementById("question")
-  domandeQuiz.innerText=array4Risposte.question
-  
+
+
 }
 
 console.log(risposte(array10Risposte))
