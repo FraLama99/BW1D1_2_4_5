@@ -163,30 +163,39 @@ function shuffle(array) {
 console.log(shuffle(array4Risposte))
 
 function quizzone(){
+
+  let ArrayBtn = [btn1, btn2, btn3, btn4]
+  
+  
   
   for(let i=0; i<array10Risposte.length; i++){
     for (let j=0; j<array4Risposte.length; j++){
       // let risposteNew = array4Risposte[j];
-    
+
     btn1.innerText = array4Risposte[j].incorrect_answers[0]
     btn2.innerText = array4Risposte[j].incorrect_answers[1]
     btn3.innerText = array4Risposte[j].incorrect_answers[2]
     btn4.innerText = array4Risposte[i].correct_answer
+   
+  
+    shuffle(array4Risposte)
+    
+    if (btn1.value ==="undefined" || btn2.value==="undefined" || btn3.value==="undefined" || btn4.value=="undefined"){
 
-    if (btn1.value=="undefined" || btn2.value=="undefined" || btn3.value=="undefined" || btn4.value=="undefined"){
-      
-      let no_result = document.getElementById("btn2")
-     no_result.style.display="none"
+    
+
+    //   let no_result = document.getElementById("btnAnswer2")
+    //  no_result.style.display="none"
       // btn2.style.display="none"
       // btn3.style.display="none"
       // btn4.style.display="none"
 
     }
   
-    shuffle(array4Risposte)
+    
   }
 }
-
+console.log (ArrayBtn)
 
   
 
