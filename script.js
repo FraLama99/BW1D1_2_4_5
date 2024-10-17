@@ -170,10 +170,16 @@ function quizzone() {
     buttone.innerText = answers[i];
     buttone.className = "Btn";
 
-    buttone.addEventListener("click", function() { checkAnswer(answers[i], currentQuestion.correct_answer);});
+    buttone.addEventListener("click", function() { checkAnswer(answers[i], currentQuestion.correctAnswer);});
 
     buttonContainer.appendChild(buttone);
   }
+
+    let buttone = document.createElement("button");
+    buttone.innerText = "Conferma";
+    buttone.className = "Btn";
+    buttonContainer.appendChild(buttone);
+    buttone.addEventListener("click", function() { quizzone();});
 
   /*btn1.innerText = answers[0];
   btn2.innerText = answers[1];
@@ -200,8 +206,6 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   }
   console.log(contatore)
   console.log(contatoreSbagliate)
-  quizzone();
-
 }
 
 
