@@ -98,6 +98,22 @@ const questions = [
   },
 ];
 
+//PAGINA PRINCIPALE - FUNZIONE PER PROCEDERE ALLE DOMANDE
+let checkboxFlag = document.getElementById('checkboxFlag')
+let linkRiferimento = "./domPage.html";
+let linkFinale = "./paginaFinale.html"
+function proceedBtn() {
+  if (checkboxFlag.checked) {
+    window.location.href = linkRiferimento;
+
+  } else {
+    alert("Please check the checkbox to proceed.");
+  }
+}
+
+
+
+
 // Mescola un array
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -114,7 +130,7 @@ let btn1 = document.getElementById("btnAnswer1")
 let btn2 = document.getElementById("btnAnswer2")
 let btn3 = document.getElementById("btnAnswer3")
 let btn4 = document.getElementById("btnAnswer4")
-
+let contatori = []
 let contatore = 0;
 let contatoreSbagliate = 0;
 let currentQuestionIndex = 0;
@@ -122,11 +138,18 @@ let currentQuestionIndex = 0;
 let questionsRandomized = shuffle(questions)
 console.log(questionsRandomized)
 
+
+//FUNZIONE DI GESTIONE DOMANDE 
 function quizzone() {
   if (currentQuestionIndex >= questionsRandomized.length) {
     /*  window.location.href = linkFinale; */
-    return console.log(contatore, contatoreSbagliate)
+
+    let contatori = [contatore, contatoreSbagliate]
+    return contatori
   }
+  let contatore = contatori[0]
+  let contatoreSbagliate = contatori[1]
+
 
   let currentQuestion = questionsRandomized[currentQuestionIndex];
   let answers = [
@@ -153,6 +176,7 @@ function quizzone() {
   btn4.onclick = () => checkAnswer(answers[3], currentQuestion.correct_answer);
 
   currentQuestionIndex++;
+
 }
 
 
@@ -163,6 +187,8 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   } else {
     contatoreSbagliate++;
   }
+  console.log(contatore)
+  console.log(contatoreSbagliate)
   quizzone();
 
 }
