@@ -19,7 +19,7 @@ main {
   height: 100vh;
 }
 
-.bottoni {
+#contenitoreButtoni {
   display: flex;
   flex-wrap: wrap;
   width: 200px;
@@ -33,6 +33,7 @@ main {
   height: 70px;
   border-radius: 10px;
 }
+
 #question {
   color: white;
 }

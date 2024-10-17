@@ -162,18 +162,29 @@ function quizzone() {
   console.log(answers)
 
   document.getElementById("question").innerText = currentQuestion.question;
+  let buttonContainer = document.getElementById("contenitoreButtoni");
+  buttonContainer.innerHTML = '';
 
+  for ( i = 0; i < answers.length; i++){
+    let buttone = document.createElement("button");
+    buttone.innerText = answers[i];
+    buttone.className = "Btn";
 
-  btn1.innerText = answers[0];
+    buttone.addEventListener("click", function() { checkAnswer(answers[i], currentQuestion.correct_answer);});
+
+    buttonContainer.appendChild(buttone);
+  }
+
+  /*btn1.innerText = answers[0];
   btn2.innerText = answers[1];
-  btn3.innerText = answers[2];
+  btn3.innerText = answers[2]; 
   btn4.innerText = answers[3];
 
 
   btn1.onclick = () => checkAnswer(answers[0], currentQuestion.correct_answer);
   btn2.onclick = () => checkAnswer(answers[1], currentQuestion.correct_answer);
   btn3.onclick = () => checkAnswer(answers[2], currentQuestion.correct_answer);
-  btn4.onclick = () => checkAnswer(answers[3], currentQuestion.correct_answer);
+  btn4.onclick = () => checkAnswer(answers[3], currentQuestion.correct_answer);*/
 
   currentQuestionIndex++;
 
