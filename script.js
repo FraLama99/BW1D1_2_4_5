@@ -256,10 +256,59 @@ function risposte() {
 }
 
 console.log(risposte(array10Risposte))
- */
 
-/* shuffle(array4Risposte)
-console.log(array4Risposte) */
+
+
+// Mescola un array
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Genera un numero casuale tra 0 e i (compresi)
+    const j = Math.floor(Math.random() * (i + 1));
+    // Scambia gli elementi in posizione i e j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+console.log(shuffle(array4Risposte))
+
+function quizzone(){
+
+  let ArrayBtn = [btn1, btn2, btn3, btn4]
+  
+  
+  
+  for(let i=0; i<array10Risposte.length; i++){
+    for (let j=0; j<array4Risposte.length; j++){
+      // let risposteNew = array4Risposte[j];
+
+    btn1.innerText = array4Risposte[j].incorrect_answers[0]
+    btn2.innerText = array4Risposte[j].incorrect_answers[1]
+    btn3.innerText = array4Risposte[j].incorrect_answers[2]
+    btn4.innerText = array4Risposte[i].correct_answer
+   
+  
+    shuffle(array4Risposte)
+    
+    if (btn1.value ==="undefined" || btn2.value==="undefined" || btn3.value==="undefined" || btn4.value=="undefined"){
+
+    
+
+    //   let no_result = document.getElementById("btnAnswer2")
+    //  no_result.style.display="none"
+      // btn2.style.display="none"
+      // btn3.style.display="none"
+      // btn4.style.display="none"
+
+    }
+  
+    
+  }
+}
+console.log (ArrayBtn)
+
+  
+
+}
 
 
 // Mostra una domanda e le risposte
