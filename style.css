@@ -8,6 +8,7 @@ body {
 main {
   position: absolute;
   top: 0;
+  padding: 50px;
 }
 .contenitoreBg {
   z-index: -1;
@@ -19,19 +20,77 @@ main {
   height: 100vh;
 }
 
-#contenitoreButtoni {
-  display: flex;
-  flex-wrap: wrap;
-  width: 200px;
-  align-content: space-between;
-  margin: auto;
-  gap: 40px;
+.titolo {
+  font-size: 60px;
+  color: white;
+  font-weight:400;
+  max-width: 400px;
+  font-family: "Outfit", sans-serif;
 }
 
-.Btn {
+.grassetto {
+  font-weight: 800;
+}
+
+.contenitoreIstruzioni {
+  max-width: 500px;
+}
+
+.sottoTitolo {
+  color: #d20094;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  margin: 0;
+}
+
+li, p {
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+.contenitoreConferma {
+  display: flex;
+  align-items: center;
+  column-gap: 200px;
+}
+
+#checkBox {
+  display: flex;
+  column-gap: 15px;
+}
+
+#contenitoreButtoni {
+  display: flex;
+    flex-wrap: wrap;
+    max-width: 900px;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+
+#proceed {
+  background-color: #00ffff;
+  border: none;
   width: 150px;
-  height: 70px;
-  border-radius: 10px;
+  height: 50px;
+  box-shadow: 1px 1px 25px 1px #00ffff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 3pt;
+}
+
+
+.Btn {
+  background-color: #23294f;
+  color: white;
+  width: 400px;
+  height: 60px;
+  border-radius: 25pt;
+  border: 1px solid white;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 #question {
@@ -44,4 +103,28 @@ main {
 }
 .luminol {
   background-color: yellow;
+}
+
+.pulsante {
+  background-color: #23294f;
+  color: white;
+  width: 400px;
+  height: 60px;
+  border-radius: 25pt;
+  border: 1px solid white;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pulsantePremuto {
+  background-color: #be018c;
+  color: white;
+  width: 400px;
+  height: 60px;
+  border-radius: 25pt;
+  border: 1px solid white;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
 }
