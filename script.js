@@ -147,14 +147,13 @@ function quizzone() {
     let paragrafo = document.createElement("h2")
     if (contatore < 6) {
       buttonContainer.innerHTML = ""
-
       paragrafo.innerText = "esame non superato, con una percentuale di:" + contatore * 10 + "%."
     } else {
       paragrafo.innerText = "eccezionale hai superato l'esame! La tua percentuale e di:" + contatore * 10 + "%."
-
     }
     let contatori = [contatore, contatoreSbagliate]
     return contatori
+
   }
   let contatore = contatori[0]
   let contatoreSbagliate = contatori[1]
