@@ -5,11 +5,20 @@ body {
 #header img {
   width: 150px;
 }
-main {
+#homePageMain {
   position: absolute;
   top: 0;
   padding: 50px;
 }
+#mainDomande {
+  position: absolute;
+  top: 0;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .contenitoreBg {
   z-index: -1;
   width: 100vw;
@@ -20,11 +29,20 @@ main {
   height: 100vh;
 }
 
+#titolo {
+  font-size: 40px;
+  color: white;
+  font-weight: 400;
+  max-width: 80vw;
+  font-family: "Outfit", sans-serif;
+  text-align: center;
+}
+
 .titolo {
   font-size: 60px;
   color: white;
-  font-weight:400;
-  max-width: 400px;
+  font-weight: 400;
+  max-width: 80vw;
   font-family: "Outfit", sans-serif;
 }
 
@@ -43,7 +61,8 @@ main {
   margin: 0;
 }
 
-li, p {
+li,
+p {
   color: white;
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -62,10 +81,11 @@ li, p {
 
 #contenitoreButtoni {
   display: flex;
-    flex-wrap: wrap;
-    max-width: 900px;
-    column-gap: 50px;
-    row-gap: 50px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  column-gap: 50px;
+  row-gap: 50px;
+  justify-content: center;
 }
 
 #proceed {
@@ -79,7 +99,6 @@ li, p {
   font-weight: 600;
   border-radius: 3pt;
 }
-
 
 .Btn {
   background-color: #23294f;

@@ -146,6 +146,7 @@ function quizzone() {
     titolo.innerText = "Esame completato, il tuo risultato è:..."
     let paragrafo = document.createElement("h2")
     if (contatore < 6) {
+      buttonContainer.innerHTML = ""
 
       paragrafo.innerText = "esame non superato, con una percentuale di:" + contatore * 10 + "%."
     } else {
@@ -168,7 +169,7 @@ function quizzone() {
   answers = shuffle(answers);
   console.log(answers)
 
-  document.getElementById("question").innerText = currentQuestion.question;
+  document.getElementById("titolo").innerText = currentQuestion.question;
   let buttonContainer = document.getElementById("contenitoreButtoni");
   buttonContainer.innerHTML = '';
 
